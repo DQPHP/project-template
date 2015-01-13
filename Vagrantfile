@@ -76,6 +76,12 @@ Vagrant.configure(2) do |config|
       recipe[httpd]
     ]
     chef.json = {
+      domain: 'chef.dev',
+      httpd: {
+        document_root: '/var/www/html',
+        error_log: '/var/log/httpd/error_log',
+        access_log: '/var/log/httpd/access_log combined'
+      },
       mysql: {
         root_password: 'DEr3AaHbfNAXAMXd'
       }
