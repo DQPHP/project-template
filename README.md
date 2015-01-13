@@ -2,6 +2,11 @@
 
 ## Usage
 
+hosts:
+```shell
+192.168.33.5    chef.dev
+```
+
 ## Issues
 
 ### Guest Additions対策
