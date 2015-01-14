@@ -1,11 +1,20 @@
 # Chef
 
-## Usage
+## Init
 
 hosts:
 ```shell
 192.168.33.5    chef.dev
 ```
+
+```
+vagrant up
+vagrant provision
+```
+
+### Usage
+
+
 
 ## Issues
 
