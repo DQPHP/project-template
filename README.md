@@ -12,7 +12,14 @@ vagrant up
 vagrant provision
 ```
 
-### Usage
+## Dependencies
+
+- Virtual Box
+- Vagrant
+- Chef
+- Chef Solo
+
+## Usage
 
 
 
