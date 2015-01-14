@@ -1,4 +1,4 @@
-# Chef
+# CINRA Project Template
 
 ## Init
 
