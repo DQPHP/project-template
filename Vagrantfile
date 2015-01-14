@@ -77,7 +77,7 @@ Vagrant.configure(2) do |config|
       recipe[php]
     ]
     chef.json = {
-      domain: 'chef.dev',
+      domain: 'cinra.dev',
       httpd: {
         document_root: '/var/www/html',
         error_log: '/var/log/httpd/error_log',

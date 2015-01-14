@@ -4,7 +4,7 @@
 
 hosts:
 ```shell
-192.168.33.5    chef.dev
+192.168.33.5    cinra.dev
 ```
 
 ```
