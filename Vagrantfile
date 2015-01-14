@@ -39,7 +39,7 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "sync", "/var/www/html"
+  config.vm.synced_folder "www", "/var/www"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -71,7 +71,7 @@ Vagrant.configure(2) do |config|
   # SHELL
 
   config.vm.provision "chef_solo" do |chef|
-    chef.cookbooks_path = "site-cookbooks/"
+    chef.cookbooks_path = "chef/site-cookbooks/"
     chef.run_list = %w[
       recipe[httpd]
       recipe[php]
@@ -84,7 +84,7 @@ Vagrant.configure(2) do |config|
         access_log: '/var/log/httpd/access_log combined'
       },
       mysql: {
-        root_password: 'DEr3AaHbfNAXAMXd'
+        root_password: 'test'
       }
     }
   end
