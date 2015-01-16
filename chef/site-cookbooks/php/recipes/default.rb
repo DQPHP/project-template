@@ -50,24 +50,22 @@ end
   end
 end
 
-# template "/etc/php.ini" do
-# 	source "php.ini.erb"
-# 	owner "root"
-# 	group "root"
-# 	mode 0644
-# 	notifies :restart, "service[httpd]"
-# end
+template "/etc/php.ini" do
+	source "php.ini.erb"
+	owner "root"
+	group "root"
+	mode 0644
+	notifies :restart, "service[httpd]"
+end
 
-# %w[
-#   date
-#   imagick
-#   ssh2
-# ].each do |pkg|
-# 	template "/etc/php.d/#{pkg}.ini" do
-# 		source "#{pkg}.ini.erb"
-# 		owner "root"
-# 		group "root"
-# 		mode 0644
-# 		notifies :restart, "service[httpd]"
-# 	end
-# end
+%w[
+  date
+].each do |pkg|
+	template "/etc/php.d/#{pkg}.ini" do
+		source "#{pkg}.ini.erb"
+		owner "root"
+		group "root"
+		mode 0644
+		notifies :restart, "service[httpd]"
+	end
+end
