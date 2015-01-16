@@ -100,7 +100,6 @@ Vagrant.configure(2) do |config|
       mysql: {
         user: 'cinra',
         password: 'test',
-        ip: '192.168.33.*',
         dbname: 'test',
         root_password: 'test'
       }

@@ -60,11 +60,9 @@ bash "mysql_set_passwords" do
     mysql -u root -p#{root_password} -e "GRANT ALL PRIVILEGES ON *.* TO '#{user}'@'localhost';" -D mysql
     mysql -u root -p#{root_password} -e "GRANT ALL PRIVILEGES ON *.* TO '#{user}'@'127.0.0.1';" -D mysql
     mysql -u root -p#{root_password} -e "GRANT ALL PRIVILEGES ON *.* TO '#{user}'@'::1';" -D mysql
-    mysql -u root -p#{root_password} -e "GRANT ALL PRIVILEGES ON *.* TO '#{user}'@'#{ip}';" -D mysql
-    mysql -u root -p#{root_password} -e "SET PASSWORD FOR '#{user}'@'localhost' = PASSWORD('#{root_password}');" -D mysql
-    mysql -u root -p#{root_password} -e "SET PASSWORD FOR '#{user}'@'127.0.0.1' = PASSWORD('#{root_password}');" -D mysql
-    mysql -u root -p#{root_password} -e "SET PASSWORD FOR '#{user}'@'::1' = PASSWORD('#{root_password}');" -D mysql
-    mysql -u root -p#{root_password} -e "SET PASSWORD FOR '#{user}'@'#{ip}' = PASSWORD('#{password}');" -D mysql
+    mysql -u root -p#{root_password} -e "SET PASSWORD FOR '#{user}'@'localhost' = PASSWORD('#{password}');" -D mysql
+    mysql -u root -p#{root_password} -e "SET PASSWORD FOR '#{user}'@'127.0.0.1' = PASSWORD('#{password}');" -D mysql
+    mysql -u root -p#{root_password} -e "SET PASSWORD FOR '#{user}'@'::1' = PASSWORD('#{password}');" -D mysql
     mysql -u root -p#{root_password} -e "FLUSH PRIVILEGES;"
   EOC
 end
