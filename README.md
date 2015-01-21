@@ -2,14 +2,13 @@
 
 ## Init
 
-hosts:
 ```shell
-192.168.33.5    cinra.dev
+$ vagrant up --provision
 ```
 
-```
-vagrant up
-vagrant provision
+hosts:
+```shell
+192.168.33.12    cinra-job.local
 ```
 
 ## Dependencies
@@ -34,7 +33,7 @@ vagrant provision
 3. ```sudo yum install -y kernel-devel```が動くようになるので、インストール → しかし状況変わらず…。
 4. kernel周りのインストール：KERN_DIRを設定しないといけない
 
-```# rpm -qa|grep kernel```
+```# ls /usr/src/kernels/```
 で、インストールされたkernel-develのヴァージョンを調査して、
 ```# export KERN_DIR=/usr/src/kernels/2.6.32-504.3.3.el6.x86_64```
 こういう感じで環境変数を設定。確認は「```# env```」で
@@ -46,13 +45,3 @@ vagrant provision
 ```
 
 5. ~~# /etc/init.d/vboxadd setupで、virtual boxを再ビルド OR ~~```# vagrant reload```
-
-~~# vagrant vbguest --status~~で確かめても
-
-```
-「GuestAdditions versions on your host (4.3.20) and guest (4.3.4) do not match.」
-```
-
-こんな感じで、一向に解決されない。マシンの問題？？（だと困る）
-
-- CentOS専用になってるなあ…。

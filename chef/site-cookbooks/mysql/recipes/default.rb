@@ -54,7 +54,7 @@ end
 
 bash "mysql_set_passwords" do
   code <<-EOC
-    mysql -u root -p#{root_password} -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('#{root_password}');" -D mysql
+    mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('#{root_password}');" -D mysql
     mysql -u root -p#{root_password} -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('#{root_password}');" -D mysql
     mysql -u root -p#{root_password} -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('#{root_password}');" -D mysql
     mysql -u root -p#{root_password} -e "GRANT ALL PRIVILEGES ON *.* TO '#{user}'@'localhost';" -D mysql
