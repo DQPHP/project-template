@@ -28,7 +28,7 @@ Vagrant.configure(2) do |config|
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
-  config.vm.network "private_network", ip: "192.168.33.12"
+  config.vm.network "private_network", ip: "192.168.33.5"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -79,12 +79,12 @@ Vagrant.configure(2) do |config|
       recipe[mysql]
     ]
     chef.json = {
-      domain: 'cinra-job.local',
+      domain: 'cinra.dev',
       charset: 'UTF-8',
       timezone: 'Asia/Tokyo',
       user: {
         name: 'cinra',
-        password: '$1$XPEBCbsd$owvyyKzyBR9j4CcKe.CBl.',# openssl passwd -1 'hB2jm7qX'
+        password: '$1$YNdSNIME$WtiakACxxXT.hNkeCVcRS.',# openssl passwd -1 'test'
         group: 'www',
         home: '/var/www',
       },
@@ -99,9 +99,9 @@ Vagrant.configure(2) do |config|
       },
       mysql: {
         user: 'cinra',
-        password: 'hB2jm7qX',
-        dbname: 'cinra_job',
-        root_password: 'X6jFTzEStpdT'
+        password: 'test',
+        dbname: 'test',
+        root_password: 'test'
       }
     }
   end
