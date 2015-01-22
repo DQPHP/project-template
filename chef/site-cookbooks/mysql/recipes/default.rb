@@ -8,9 +8,9 @@
 #
 
 %w[
-	mysql
-	mysql-server
-	mysql-devel
+  mysql
+  mysql-server
+  mysql-devel
 ].each do |pkg|
   package pkg do
     action :install
@@ -48,13 +48,13 @@ bash "mysql_remove_auth_from_root" do
   code <<-EOC
     mysql -u root -e "DELETE FROM mysql.user WHERE User='';"
     mysql -u root -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
+    mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('#{root_password}');" -D mysql
   EOC
   only_if "mysql -u root -e 'show databases'"
 end
 
 bash "mysql_set_passwords" do
   code <<-EOC
-    mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('#{root_password}');" -D mysql
     mysql -u root -p#{root_password} -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('#{root_password}');" -D mysql
     mysql -u root -p#{root_password} -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('#{root_password}');" -D mysql
     mysql -u root -p#{root_password} -e "GRANT ALL PRIVILEGES ON *.* TO '#{user}'@'localhost';" -D mysql
@@ -71,4 +71,5 @@ bash "mysql_createdb" do
   code <<-EOC
     mysql -u cinra -p#{password} -e "CREATE DATABASE IF NOT EXISTS #{dbname};"
   EOC
+  only_if "mysql -u #{user} -p#{password} -e 'show databases'"
 end
