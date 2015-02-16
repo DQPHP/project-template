@@ -72,40 +72,4 @@ Vagrant.configure(2) do |config|
   # config.vm.provision "shell", inline <<-SHELL
   #   sudo apt-get install apache2
   # SHELL
-
-  config.vm.provision "chef_solo" do |chef|
-    chef.cookbooks_path = "chef/site-cookbooks/"
-    chef.run_list = %w[
-      recipe[adduser]
-      recipe[httpd]
-      recipe[php]
-      recipe[mysql]
-    ]
-    chef.json = {
-      domain: 'cinra.dev',
-      charset: 'UTF-8',
-      timezone: 'Asia/Tokyo',
-      user: {
-        name: 'cinra',
-        password: '$1$YNdSNIME$WtiakACxxXT.hNkeCVcRS.',# openssl passwd -1 'test'
-        group: 'www',
-        home: '/var/www',
-      },
-      httpd: {
-        document_root: '/var/www/html',
-        error_log: '/var/log/httpd/error_log',
-        access_log: '/var/log/httpd/access_log combined'
-      },
-      php: {
-        post_max_size: '32M',
-        upload_max_filesize: '32M'
-      },
-      mysql: {
-        user: 'cinra',
-        password: 'test',
-        dbname: 'test',
-        root_password: 'test'
-      }
-    }
-  end
 end
