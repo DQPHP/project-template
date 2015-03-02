@@ -69,7 +69,7 @@ end
 
 bash "mysql_createdb" do
   code <<-EOC
-    mysql -u cinra -p#{password} -e "CREATE DATABASE IF NOT EXISTS #{dbname};"
+    mysql -u #{user} -p#{password} -e "CREATE DATABASE IF NOT EXISTS #{dbname};"
   EOC
   only_if "mysql -u #{user} -p#{password} -e 'show databases'"
 end
